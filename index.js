@@ -1,7 +1,6 @@
 console.log("Sanity Check");
-let arr = [1,2,3,4,5,6,7];
-const x = (y) => (y);
-console.log(arr.maps(x));
+let urls = ["https://swapi.co/api/films/1/", "https://swapi.co/api/films/2/", "https://swapi.co/api/films/3/", "https://swapi.co/api/films/4/", "https://swapi.co/api/films/5/", "https://swapi.co/api/films/6/", "https://swapi.co/api/films/7/"];
+
 
 const buildHtmlElements = (responseData) => {
       console.log(responseData);
@@ -14,10 +13,20 @@ const buildHtmlElements = (responseData) => {
     };
 const getData = (response) => buildHtmlElements(response);
 
-$("#getData").click(function() {
+let req = (urls) => {
   $.ajax({
-    url:"https://swapi.co/api/films/" + 1 + "/",
+    url: urls,
     type : "GET",
     success : get = (data) => getData(data)
   });
-});
+}
+
+$("#getData").click(
+  req(urls[0]),
+  req(urls[1]),
+  req(urls[2]),
+  req(urls[3]),
+  req(urls[4]),
+  req(urls[5]),
+  req(urls[6])
+);
